@@ -37,7 +37,7 @@
 </nav>
 
 <div class="container mt-4">
-    <h1 class="mb-4">Product Catalog</h1>
+    <h1 class="mb-4">List of Products</h1>
     <div class="row">
         <% for(Product p : ProductList.getProducts()) { %>
         <div class="col-md-4 mb-4">
