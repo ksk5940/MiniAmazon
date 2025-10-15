@@ -1,0 +1,94 @@
+<project xmlns="http://maven.apache.org/POM/4.0.0"
+         xmlns:xsi="http://www.w3.org/2001/XMLSchema-instance"
+         xsi:schemaLocation="http://maven.apache.org/POM/4.0.0
+                             http://maven.apache.org/xsd/maven-4.0.0.xsd">
+
+  <modelVersion>4.0.0</modelVersion>
+
+  <groupId>com.ksk5940</groupId>
+  <artifactId>MiniAmazon</artifactId>
+  <version>1.0-SNAPSHOT</version>
+  <packaging>war</packaging>
+
+  <name>MiniAmazon</name>
+  <description>Demo Amazon-like JSP Maven webapp</description>
+
+  <properties>
+    <maven.compiler.source>11</maven.compiler.source>
+    <maven.compiler.target>11</maven.compiler.target>
+    <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
+    <sonar.projectKey>com.example:MiniAmazon</sonar.projectKey>
+    <sonar.host.url>http://192.168.0.140:8082/</sonar.host.url>
+    <sonar.login>squ_2550e9e4a7d84a6d267f1370227b6fb7e611d363</sonar.login>
+    <!--<sonar.java.binaries>target/classes</sonar.java.binaries>   It was look for .class file int his location to generate SQ report
+    <sonar.exclusions>**/*.java</sonar.exclusions> It is used to exclude scan on perticular files -->
+  </properties>
+
+  <dependencies>
+           
+    <!-- Use javax.servlet-api for Tomcat 9 compatibility -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>javax.servlet-api</artifactId>
+      <version>4.0.1</version>
+      <scope>provided</scope>
+    </dependency>
+           
+    <!-- JSTL support (if you use JSTL in your JSPs) -->
+    <dependency>
+      <groupId>javax.servlet</groupId>
+      <artifactId>jstl</artifactId>
+      <version>1.2</version>
+    </dependency>
+           
+    <dependency>
+      <groupId>javax.servlet.jsp</groupId>
+      <artifactId>javax.servlet.jsp-api</artifactId>
+      <version>2.3.3</version>
+      <scope>provided</scope>
+    </dependency>
+  </dependencies>
+
+  <build>
+    <finalName>MiniAmazon</finalName>
+    <plugins>
+      <plugin>
+        <groupId>org.apache.maven.plugins</groupId>
+        <artifactId>maven-war-plugin</artifactId>
+        <version>3.4.0</version>
+        <configuration>
+          <failOnMissingWebXml>false</failOnMissingWebXml>
+          <webResources>
+            <resource>
+              <directory>src/main/webapp/WEB-INF</directory>
+              <filtering>true</filtering>
+              <includes>
+                <include>web.xml</include>
+              </includes>
+              <targetPath>WEB-INF</targetPath>
+            </resource>
+            <resource>
+              <directory>src/main/webapp</directory>
+              <filtering>false</filtering>
+              <excludes>
+                <exclude>WEB-INF/web.xml</exclude>
+              </excludes>
+            </resource>
+          </webResources>
+        </configuration>
+      </plugin>
+    </plugins>
+  </build>
+         
+  <distributionManagement>
+    <repository>
+      <id>nexus</id>
+      <url>http://192.168.0.140:8081/repository/MiniAmazon-release/</url>
+    </repository>
+    <snapshotRepository>
+      <id>nexus</id>
+      <url>http://192.168.0.140:8081/repository/MiniAmazon-snapshot/</url>
+    </snapshotRepository>
+  </distributionManagement>
+
+</project>

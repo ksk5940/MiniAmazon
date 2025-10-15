@@ -1,0 +1,52 @@
+body {
+  font-family: 'Amazon Ember', Arial, Helvetica, sans-serif;
+  background: #EAEDED;
+  margin:0;
+}
+.container {max-width:1150px;margin:30px auto;padding:16px;}
+.nav-bar {
+  background: #131921;
+  color: #fff;
+  display: flex;
+  align-items: center;
+  padding: 0 20px;
+  height: 55px;
+  justify-content: space-between;
+}
+.nav-logo img { height: 38px; }
+.nav-search input {
+  width: 350px; padding: 8px;
+  border: none; border-radius: 4px 0 0 4px;
+}
+.nav-search button {
+  padding: 8px 12px; border: none;
+  background: #febd69; border-radius: 0 4px 4px 0;
+  cursor: pointer;
+}
+.product-list { display: flex; flex-wrap: wrap; gap:20px; justify-content: center;}
+.card {
+  background: #fff;
+  border-radius: 10px;
+  box-shadow: 0 1px 10px 0 rgba(0,0,0,0.13);
+  width: 230px;
+  margin: 16px 8px; padding: 15px;
+}
+.card img { margin:0 auto; display:block; max-width:85%; height:160px; }
+.card h4 { font-size:18px; font-weight:600; }
+.card p { color: #565959;}
+.card .price { color:#B12704;font-size:20px;font-weight:700;}
+.card .add-btn {
+  background: #FFD814; color:#111;
+  border:1px solid #FCD200; border-radius:18px;
+  padding:8px 20px; font-weight:700; cursor:pointer; margin-top:10px;
+}
+.card .add-btn:hover { background:#F7CA00;}
+.cart-item {display:flex;align-items:center;gap:16px;padding:10px;}
+.submit-btn {
+  background:#FFD814;border:1px solid #FCD200;border-radius:13px;
+  padding:11px 44px;color:#131921;font-weight:700;cursor:pointer;
+}
+.form-block {background:#fff;padding:24px;border-radius:10px;box-shadow:0 2px 10px #ddd;width:350px;margin:auto;}
+h2 {color:#232F3E;}
+.msg {color:#B12704;margin-top:8px;}
+.cart-link {display:inline-block;margin-top:18px;font-size:15px;}
