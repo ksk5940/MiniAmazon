@@ -7,7 +7,7 @@
 
   <groupId>com.ksk5940</groupId>
   <artifactId>MiniAmazon</artifactId>
-  <version>1.0-SNAPSHOT</version>
+  <version>1.0</version>
   <packaging>war</packaging>
 
   <name>MiniAmazon</name>
