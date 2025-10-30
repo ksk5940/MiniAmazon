@@ -1,0 +1,58 @@
+pipeline {
+    agent any
+
+    tools {
+        maven 'maven-3.9.11'
+    }
+
+    stages {
+        stage('Git checkout') {
+            steps {
+                git branch: 'main', 
+                    url: 'https://github.com/ksk5940/MiniAmazon.git'
+            }
+        }
+
+        stage('WAR Build') {
+            steps {
+                sh 'mvn clean package'
+            }
+        }
+        
+        stage('SonarQube Analysis') {
+            steps {
+                withSonarQubeEnv('sonarqube') {
+                    sh """
+                    mvn sonar:sonar \
+                        -Dsonar.projectKey=com.example:MiniAmazon \
+                        -Dsonar.projectName='MiniAmazon' \
+                    """
+                }
+            }
+        }
+        stage('WAR to Nexus') {
+            steps {
+                nexusArtifactUploader artifacts: [[artifactId: 'MiniAmazon', classifier: '', file: 'target/MiniAmazon.war', type: '.war']], credentialsId: '85af3095-27ed-4e96-b1a1-310af98633ae', groupId: 'com.ksk5940', nexusUrl: '192.168.0.104:8081', nexusVersion: 'nexus3', protocol: 'http', repository: 'MiniAmazon-snapshot', version: '1.0-SNAPSHOT'
+            }
+        }
+        
+        stage('Docker Image Build') {
+            steps {
+                script {
+                        sh 'docker build -t ksk5940/miniamazon .'
+                }
+            }
+        }
+        
+        stage('Image to Registry') {
+            steps {
+                script {
+                   withDockerRegistry(credentialsId: 'a58494f4-34ec-4a9e-992e-27d8b9442094') {
+                    sh 'docker push ksk5940/miniamazon'
+                }
+                }
+            }
+        }
+        
+    }
+}
