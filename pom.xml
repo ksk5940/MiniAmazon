@@ -18,9 +18,9 @@
     <maven.compiler.target>11</maven.compiler.target>
     <project.build.sourceEncoding>UTF-8</project.build.sourceEncoding>
     <sonar.projectKey>com.example:MiniAmazon</sonar.projectKey>
-    <sonar.host.url>http://192.168.0.140:8082/</sonar.host.url>
+ <!--   <sonar.host.url>http://192.168.0.140:8082/</sonar.host.url>
     <sonar.login>squ_2550e9e4a7d84a6d267f1370227b6fb7e611d363</sonar.login>
-    <!--<sonar.java.binaries>target/classes</sonar.java.binaries>   It was look for .class file int his location to generate SQ report
+    <sonar.java.binaries>target/classes</sonar.java.binaries>   It was look for .class file int his location to generate SQ report
     <sonar.exclusions>**/*.java</sonar.exclusions> It is used to exclude scan on perticular files -->
   </properties>
 
@@ -81,14 +81,14 @@
   </build>
          
   <distributionManagement>
-    <repository>
+  <!--  <repository>
       <id>nexus</id>
       <url>http://192.168.0.140:8081/repository/MiniAmazon-release/</url>
     </repository>
     <snapshotRepository>
       <id>nexus</id>
       <url>http://192.168.0.140:8081/repository/MiniAmazon-snapshot/</url>
-    </snapshotRepository>
+    </snapshotRepository>  -->
   </distributionManagement>
 
 </project>
