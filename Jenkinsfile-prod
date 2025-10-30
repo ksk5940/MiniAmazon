@@ -1,0 +1,25 @@
+pipeline {
+      agent { label 'Production-node' }
+
+    stages {
+        
+        stage('undeploying previous version') {
+            steps {
+                sh 'docker rm -f MiniAmazon'
+            }
+        }
+        stage('Deploying to Prod') {
+            steps {
+                sh 'docker run -d -p 80:8080 --name MiniAmazon ksk5940/miniamazon'
+            }
+        }
+        
+        stage('Status of application') {
+            steps {
+                echo 'checking aplication status...'
+                sleep 5
+                sh 'docker ps'
+            }
+        }
+    }
+}
